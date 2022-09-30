@@ -1,0 +1,41 @@
+<p>Select two sutras to find formulas between them.</p>
+<p>If Sutra 1 and Sutra 2 are the same it will look for repations instead.</p>
+
+<div>
+    <span> Sutra 1 </span>
+<select id="accountSelect" [(ngModel)]="sutra1" name="sutra1" required>
+    <option *ngFor="let sutra of sutras" [value]="sutra.id">
+      {{sutra.name}}
+    </option>
+</select>
+
+<span> Sutra 2 </span>
+<select id="accountSelect2" [(ngModel)]="sutra2" name="sutra2" required>
+    <option *ngFor="let sutra of sutras" [value]="sutra.id">
+      {{sutra.name}}
+    </option>
+</select>
+
+<button id="submitButton" (click)="getFormulas();" [hidden] = "waiting">Get Formulas</button>
+</div>
+
+<div [hidden] = "!waiting" >
+ <h2> Waiting for results</h2>
+</div>
+
+<div *ngFor="let ngram of formulas" [hidden] = "waiting" >
+<div>
+    Formula: {{ngram.ngram}}
+</div>
+
+<div>
+    Size: {{ngram.size}}
+</div>
+<div>
+    Unique: {{ngram.unique}}
+</div>
+<div>
+    Total: {{ngram.total}}
+</div>
+
+</div>

@@ -1,0 +1,15 @@
+<div *ngIf="!sutras.length">
+
+    <h2>You haven't added any files yet.</h2>
+
+</div>
+
+<div *ngFor="let sutra of sutras">
+
+<button [innerText]="sutra.name" (click)="viewSutra(sutra.id);"></button>
+
+</div>
+
+<div>
+    <button (click)="addFile();">Add File</button>
+</div>

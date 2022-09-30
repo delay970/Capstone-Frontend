@@ -1,0 +1,23 @@
+<div *ngFor="let i of numUploads">
+    <input type="file" class="file-input" (change)="onFileSelected($event, i)" #fileUpload hidden = true>
+    <div class="file-upload">
+    
+        {{fileName[i] || "No file selected."}}
+     
+         <button (click)="fileUpload.click()" class = button>Choose File</button>
+         <button (click)="removeFile(i)" class = button style = "background-color: red;">Remove File</button>
+     </div>
+    </div>
+    
+    <div>
+        <button (click)="addFile()" class = button>Add file</button>
+    </div>
+    
+    <div *ngIf="count" >
+        <button  *ngIf="count==numUploads.length" (click)="submit()" class = button>Submit Files</button>
+    </div>
+    
+    
+    <div>
+        <button (click)="clearFiles()" class = button style = "background-color: red;">Clear Saved Files</button>
+    </div>
